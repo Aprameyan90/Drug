@@ -1,0 +1,23 @@
+<ion-header>
+    <ion-toolbar color="primary">
+        <ion-title>
+            DRUG Form
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <form [formGroup]="myform" (ngSubmit)="submitForm()">
+        <ion-item *ngFor="let c of simpleForm">
+            <ion-label position="stacked">
+            {{c.options.label}}
+        </ion-label>
+        <div [ngSitch]="c.type">
+            <ion-toggle *ngSwitchCase="Boolean" [formControlName]="c.key"></ion-toggle>
+            <ion-toggle *ngSwitchCase="text" [formControlName]="c.key"></ion-toggle>
+            <ion-toggle *ngSwitchCase="date" [formControlName]="c.key"></ion-toggle>
+        </div>
+        </ion-item>
+
+    </form>
+</ion-content>
